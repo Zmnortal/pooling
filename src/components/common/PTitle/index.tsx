@@ -8,7 +8,7 @@ const PTitle: FC<Props> = (props) => {
   const { children } = props
 
   return (
-    <h2 className="opacity-50 text-neutral-900 text-[23px] font-bold font-['Playfair Display'] leading-[30.66px]">
+    <h2 className="opacity-50 text-neutral-900 text-[23px] font-bold font-playfair leading-[30.66px]">
       { children }
     </h2>
   )

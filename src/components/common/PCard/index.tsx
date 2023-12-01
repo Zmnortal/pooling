@@ -16,7 +16,7 @@ const PCard: FC<Props> = (props) => {
   } = props
 
   return (
-    <div className={clsx("card bg-[#DCC8BB]", className)}>
+    <div className={clsx("card rounded-3xl bg-[#DCC8BB]", className)}>
       {
         title
         && (

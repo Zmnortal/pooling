@@ -1,18 +1,21 @@
-import { CSSProperties, FC, PropsWithChildren } from "react"
+import { CSSProperties, FC } from "react"
 import clsx from 'clsx'
 
-interface Props extends PropsWithChildren {
+export interface PButtonProps extends Omit<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, 'type'> {
   style?: CSSProperties
   className?: string
   type?: 'default' | 'ghost' | 'primary'
+  size?: 'md' | 'lg'
 }
 
-const PButton: FC<Props> = (props) => {
+const PButton: FC<PButtonProps> = (props) => {
   const {
     className,
     style,
     type = 'default',
-    children
+    size = 'md',
+    children,
+    ...otherProps
   } = props
 
   return (
@@ -20,17 +23,20 @@ const PButton: FC<Props> = (props) => {
       className={
         clsx(
           'btn',
-          'h-[27px]',
           'min-h-[27px]',
           'text-xs',
+          'font-playfair',
           {
             'btn-primary': type === 'primary',
-            'btn-ghost': type === 'ghost'
+            'btn-ghost': type === 'ghost',
+            'h-[27px]': size === 'md',
+            'btn-lg': size === 'lg'
           },
           className
         )
       }
       style={style}
+      {...otherProps}
     >
       { children }
     </button>

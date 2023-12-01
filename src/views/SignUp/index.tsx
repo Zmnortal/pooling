@@ -3,82 +3,134 @@ import PCard from "../../components/common/PCard"
 import PInput from "../../components/common/PInput"
 import PButton from "../../components/common/PButton"
 import PTitle from "../../components/common/PTitle"
+import PNeutralButton from "../../components/common/PNeutralButton"
+import ArrowUpRight from "../../components/common/Icons/ArrowUpRight"
+import PRadioGroup from "../../components/common/PRadioGroup"
+import PSteps from "../../components/common/PSteps"
+import useSignUpStore from "./store"
+import StepTwoCard from "./StepTwoCard"
+import FormRow from "./FormRow"
 
 const SignUp: FC = () => {
+  const { currentStep, switchToNextStep, switchToPrevStep } = useSignUpStore()
+
+  const handleStepsNextButtonClick = () => {
+    switchToNextStep()
+  }
+
+  const handleStepsPrevButtonClick = () => {
+    switchToPrevStep()
+  }
+
   return (
-    <div className="flex justify-center">
+    <div className="pt-[78px] flex justify-center">
       <div>
-        <div>
+        <div className="opacity-70 text-neutral-900 text-[17px] font-bold font-playfair leading-snug">
           START FOR FREE
         </div>
 
-        <div>
+        <div className="text-neutral-900 text-[58px] font-normal font-playfair leading-[77.31px]">
           Create new account.
         </div>
 
-        <div className="flex">
-          <PCard className="p-[50px]" bodyClass="p-0">
-            <form>
-              <div className="py-2">
-                <PTitle>Create your email account</PTitle>
-                <PInput />
+        <div className="pt-[18px] flex items-center">
+          <div className="opacity-70 text-neutral-900 text-[21px] font-bold font-playfair first-line:leading-7">
+            Already A Member?
+          </div>
 
-                <PButton>Send</PButton>
-              </div>
+          <PNeutralButton className="ml-[49px]">
+            Sign in
+            <ArrowUpRight className="h-[15px] w-[15px]" />
+          </PNeutralButton>
+        </div>
 
-              <div>
-                <PInput />
+        <div className="mt-[80px] flex gap-[100px]">
+          {
+            currentStep === 0
+            && (
+              <>
+                <PCard className="h-[550px] w-[660px] p-[50px]" bodyClass="p-0 gap-0">
+                  <form>
+                    <div className="pt-2">
+                      <PTitle>Create your email account</PTitle>
+                    </div>
 
-                <PButton>Check</PButton>
-              </div>
-            </form>
+                    <FormRow>
+                      <PInput label="Email" />
+                      <PButton className="h-[60px] w-[120px] rounded-[1.25rem] text-neutral-900">
+                        <span className="opacity-70 text-[23px]">
+                          Send
+                        </span>
+                      </PButton>
+                    </FormRow>
 
-            <form>
-              <div className="py-2">
-                <PTitle>Password</PTitle>
-              </div>
+                    <FormRow>
+                      <PInput label="Code" />
 
-              <div className="py-2">
-                <PInput />
-              </div>
+                      <PButton className="h-[60px] w-[120px] mr-[140px] rounded-[1.25rem]">
+                        <span className="opacity-70 text-[23px]">Check</span>
+                      </PButton>
+                    </FormRow>
+                  </form>
 
-              <div>
-                <PInput />
-              </div>
-            </form>
-          </PCard>
+                  <form className="mt-[38px]">
+                    <PTitle>Password</PTitle>
 
-          <PCard>
-            <form>
-              <div className="py-2">
-                <PTitle>Personal details</PTitle>
-              </div>
+                    <FormRow>
+                      <PInput label="Choose a password" placeholder="At least 8 characters" />
+                    </FormRow>
 
-              <div className="py-2">
-                <PInput />
-              </div>
+                    <FormRow>
+                      <PInput label="Repeat password" />
+                    </FormRow>
+                  </form>
+                </PCard>
 
-              <div className="flex">
-                <PInput />
+                <PCard className="h-[550px] w-[660px] p-[50px]" bodyClass="p-0 gap-0">
+                  <form>
+                    <div className="pt-2">
+                      <PTitle>Personal details</PTitle>
+                    </div>
 
-                <PInput />
-              </div>
-            </form>
+                    <FormRow>
+                      <PRadioGroup />
+                      <PRadioGroup />
+                    </FormRow>
+                    
+                    <FormRow>
+                      <PInput label="First name" />
+                      <PInput label="Last name" />
+                    </FormRow>
+                  </form>
 
-            <form>
-              <div className="py-2">
-                <PTitle>Area</PTitle>
-              </div>
+                  <form className="mt-[38px]">
+                    <div>
+                      <PTitle>Area</PTitle>
+                    </div>
 
-              <div className="py-2">
-                <PInput />
-              </div>
+                    <FormRow>
+                      <PInput label="Country/Region" />
+                    </FormRow>
 
-              <div>
-                <PInput />
-              </div>
-            </form>
-          </PCard>
+                    <FormRow>
+                      <PInput label="State" />
+                    </FormRow>
+                  </form>
+                </PCard>
+              </>
+            )
+          }
+
+          {
+            currentStep === 1
+            && (
+              <StepTwoCard />
+            )
+          }
+        </div>
+
+        <div className="w-full mt-16 flex justify-center">
+          <PSteps current={currentStep} onNextButtonClick={handleStepsNextButtonClick} onPrevButtonClick={handleStepsPrevButtonClick} />
         </div>
       </div>
     </div>

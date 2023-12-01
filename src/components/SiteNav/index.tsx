@@ -1,9 +1,19 @@
 import { FC } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logoSrc from '../../assets/logo.png'
 import PButton from "../common/PButton"
 
 const SiteNav: FC = () => {
+  const navigate = useNavigate()
+
+  const handleSignInButtonClick = () => {
+    navigate('/sign-in')
+  }
+
+  const handleSignUpButtonClick = () => {
+    navigate('/sign-up')
+  }
+
   return (
     <header>
       <nav className="h-[45px] pl-[66px] pr-[123px] pr bg-[#302929] flex items-center justify-between">
@@ -11,8 +21,8 @@ const SiteNav: FC = () => {
 
         <div>
           <PButton className="text-white" type="ghost">Home</PButton>
-          <PButton className="text-white" type="ghost">Sign in</PButton>
-          <PButton>Sign Up</PButton>
+          <PButton className="text-white" type="ghost" onClick={handleSignInButtonClick}>Sign in</PButton>
+          <PButton onClick={handleSignUpButtonClick}>Sign Up</PButton>
         </div>
       </nav>
     </header>
