@@ -14,8 +14,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {
+  args: {
+    children: 'Click me'
+  },
+};
+
 export const Primary: Story = {
   args: {
-    children: 'asdf'
+    children: 'Click me',
+    type: 'primary'
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    children: 'Click me',
+    type: 'ghost'
   },
 };

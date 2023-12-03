@@ -9,7 +9,7 @@ const PGiganticButton: FC<Props> = (props) => {
   const { children } = props
 
   return (
-    <PButton className="h-[75px] px-8 rounded-full font-bold text-[32px]">
+    <PButton className="h-[75px] px-8 rounded-full font-bold !text-[32px]">
       <div>
         { children }
       </div>

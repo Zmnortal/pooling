@@ -15,8 +15,8 @@ const SiteNav: FC = () => {
   }
 
   return (
-    <header>
-      <nav className="h-[45px] pl-[66px] pr-[123px] pr bg-[#302929] flex items-center justify-between">
+    <header className="w-full h-[45px] absolute top-0">
+      <nav className="h-full pl-[66px] pr-[123px] pr bg-[#302929]  flex items-center justify-between">
         <Link to='/'><img className="h-[32px] w-[26px]" src={logoSrc} /></Link>
 
         <div>
