@@ -3,6 +3,7 @@ import PCard from "../../components/common/PCard"
 import PTitle from "../../components/common/PTitle"
 import PInput from "../../components/common/PInput"
 import FormRow from "./FormRow"
+import PSelect from "../../components/common/PSelect"
 
 const StepTwoCard: FC = () => {
   return (
@@ -15,8 +16,8 @@ const StepTwoCard: FC = () => {
         </FormRow>
 
         <FormRow className="mr-[380px]">
-            <PInput label="Institute" />
-            <PInput label="Title" />
+            <PSelect label="Institute" />
+            <PSelect label="Title" />
         </FormRow>
 
         <FormRow>
